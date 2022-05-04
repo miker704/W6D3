@@ -428,3 +428,557 @@ Processing by UsersController#show as */*
 Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (20.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (16.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7974280239715595190)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUser (20220504191925)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (14.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL)[0m
+  ↳ db/migrate/20220504191925_create_user.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220504191925"]]
+  ↳ bin/rails:9
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-05-04 19:22:23.376678"], ["updated_at", "2022-05-04 19:22:23.376678"]]
+  ↳ bin/rails:9
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7974280239715595190)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email") VALUES ($1, $2) RETURNING "id"[0m  [["name", "michael"], ["email", "generic"]]
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2022-05-04 15:39:29 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/miker/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.7.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/miker/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.7.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/miker/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (2.2ms)
+Completed 200 OK in 14ms (Views: 9.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2022-05-04 15:40:13 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 74ms (Views: 5.9ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/users?name=%27%27" for ::1 at 2022-05-04 15:44:49 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"'evan'", "email"=>"'generric2'"}, "name"=>"''"}
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users?name=" for ::1 at 2022-05-04 15:52:41 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"'evan'", "email"=>"'generric2'"}, "name"=>""}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users?name=" for ::1 at 2022-05-04 15:53:35 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"'evan'", "email"=>"'generric2'"}, "name"=>"", "email"=>"heeeeeeee"}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2022-05-04 16:00:28 -0400
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"name"=>"'evan'", "email"=>"'generric2'"}, "name"=>"e", "email"=>"heeeeeeee", ":user"=>[""]}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for ::1 at 2022-05-04 16:02:46 -0400
+Processing by UsersController#index as */*
+  Parameters: {":user"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/user" for ::1 at 2022-05-04 16:02:50 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/user"):
+  
+actionpack (5.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.7.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.7.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.7.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.7.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.7.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.7.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.7.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.7.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.7.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.7.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users" for ::1 at 2022-05-04 16:02:59 -0400
+Processing by UsersController#index as */*
+  Parameters: {":user"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for ::1 at 2022-05-04 16:05:14 -0400
+Processing by UsersController#create as */*
+  Parameters: {":user"=>"name: 'hello'"}
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2022-05-04 16:05:34 -0400
+Processing by UsersController#index as */*
+  Parameters: {":user"=>"name: 'hello'"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users?users[name]=evan&users[email]=random" for ::1 at 2022-05-04 16:07:52 -0400
+Processing by UsersController#create as */*
+  Parameters: {":user"=>"name: 'hello'", "users"=>{"name"=>"evan", "email"=>"random"}}
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2022-05-04 16:08:07 -0400
+Processing by UsersController#index as */*
+  Parameters: {":user"=>"name: 'hello'"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 10ms (Views: 9.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users?name:=ddddd&email:=dcsdcsdvs" for ::1 at 2022-05-04 16:09:22 -0400
+Processing by UsersController#create as */*
+  Parameters: {"name:"=>"ddddd", "email:"=>"dcsdcsdvs"}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users?name:=ddddd&email:=dcsdcsdvs" for ::1 at 2022-05-04 16:09:33 -0400
+Processing by UsersController#index as */*
+  Parameters: {"name:"=>"ddddd", "email:"=>"dcsdcsdvs"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for ::1 at 2022-05-04 16:09:41 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for ::1 at 2022-05-04 16:14:56 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"michael", "email"=>"random"}}
+Completed 200 OK in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2022-05-04 16:16:14 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"michael", "email"=>"random"}}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2022-05-04 16:16:20 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"michael", "email"=>"random"}}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2022-05-04 16:18:32 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"michael", "email"=>"random"}}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2022-05-04 16:19:25 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/miker/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.7.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"michael", "email"=>"random"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email") VALUES ($1, $2) RETURNING "id"[0m  [["name", "michael"], ["email", "random"]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10
+Completed 200 OK in 61845ms (Views: 0.3ms | ActiveRecord: 7.7ms)
+
+
+Started POST "/users" for ::1 at 2022-05-04 16:20:56 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"michael2", "email"=>"random2"}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email") VALUES ($1, $2) RETURNING "id"[0m  [["name", "michael2"], ["email", "random2"]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10
+Completed 200 OK in 40999ms (Views: 0.2ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/users" for ::1 at 2022-05-04 16:21:54 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"michael3", "email"=>"random3"}}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email") VALUES ($1, $2) RETURNING "id"[0m  [["name", "michael3"], ["email", "random3"]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10
+Completed 200 OK in 100097ms (Views: 0.2ms | ActiveRecord: 5.1ms)
+
+
+Started POST "/users" for ::1 at 2022-05-04 16:23:56 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/miker/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.7.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"michael4", "email"=>"random4"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:9
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email") VALUES ($1, $2) RETURNING "id"[0m  [["name", "michael4"], ["email", "random4"]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:9
+Completed 200 OK in 96ms (Views: 0.3ms | ActiveRecord: 9.2ms)
+
+
+Started POST "/users" for ::1 at 2022-05-04 16:24:23 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"michael5", "email"=>"random5"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email") VALUES ($1, $2) RETURNING "id"[0m  [["name", "michael5"], ["email", "random5"]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10
+Completed 200 OK in 64980ms (Views: 0.2ms | ActiveRecord: 8.3ms)
+
+
+Started POST "/users" for ::1 at 2022-05-04 16:25:51 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"michael6", "email"=>"random6"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:9
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email") VALUES ($1, $2) RETURNING "id"[0m  [["name", "michael6"], ["email", "random6"]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (21.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:9
+Completed 200 OK in 105ms (Views: 0.3ms | ActiveRecord: 25.8ms)
+
+
+Started GET "/users" for ::1 at 2022-05-04 16:26:13 -0400
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"name"=>"michael6", "email"=>"random6"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 92ms (Views: 90.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users" for ::1 at 2022-05-04 16:28:03 -0400
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"name"=>"michael7", "email"=>""}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 81ms (Views: 3.6ms | ActiveRecord: 4.6ms)
+
+
+Started POST "/users" for ::1 at 2022-05-04 16:28:11 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"michael7", "email"=>""}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:9
+Completed 422 Unprocessable Entity in 164ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for ::1 at 2022-05-04 16:30:21 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"michael7", "email"=>""}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:9
+Completed 422 Unprocessable Entity in 75ms (Views: 0.2ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/users" for ::1 at 2022-05-04 16:30:28 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"michael7", "email"=>"afsgdfnhngdrsf"}}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:9
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email") VALUES ($1, $2) RETURNING "id"[0m  [["name", "michael7"], ["email", "afsgdfnhngdrsf"]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:9
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/users" for ::1 at 2022-05-04 16:38:28 -0400
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"name"=>"michael7", "email"=>"afsgdfnhngdrsf"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 90ms (Views: 5.6ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/user/2" for ::1 at 2022-05-04 16:38:45 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/user/2"):
+  
+actionpack (5.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.7.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.7.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.7.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.7.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.7.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.7.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.7.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.7.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.7.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.7.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/2" for ::1 at 2022-05-04 16:38:58 -0400
+Processing by UsersController#show as */*
+  Parameters: {"user"=>{"name"=>"michael7", "email"=>"afsgdfnhngdrsf"}, "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/users/2" for ::1 at 2022-05-04 16:39:54 -0400
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"name"=>"michael7", "email"=>"afsgdfnhngdrsf"}, "id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:28
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/users_controller.rb:28
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:28
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/users/2" for ::1 at 2022-05-04 16:40:01 -0400
+Processing by UsersController#show as */*
+  Parameters: {"user"=>{"name"=>"michael7", "email"=>"afsgdfnhngdrsf"}, "id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=2):
+  
+app/controllers/users_controller.rb:21:in `show'
+Started GET "/users/" for ::1 at 2022-05-04 16:40:07 -0400
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"name"=>"michael7", "email"=>"afsgdfnhngdrsf"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 1.0ms)
+
+
+Started PUT "/users/1" for ::1 at 2022-05-04 16:41:03 -0400
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"michael1", "email"=>"generic1"}, "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:33
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `user_params' for #<UsersController:0x00007f24e81bab70>
+Did you mean?  user1_path):
+  
+app/controllers/users_controller.rb:35:in `update'
+Started GET "/users/1" for ::1 at 2022-05-04 16:41:11 -0400
+Processing by UsersController#show as */*
+  Parameters: {"user"=>{"name"=>"michael1", "email"=>"generic1"}, "id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started PUT "/users/1" for ::1 at 2022-05-04 16:41:26 -0400
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"michael1", "email"=>"generic1"}, "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:33
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `user_params' for #<UsersController:0x00007f24e8304210>
+Did you mean?  user1_path):
+  
+app/controllers/users_controller.rb:35:in `update'
+Started GET "/users/1" for ::1 at 2022-05-04 16:41:34 -0400
+Processing by UsersController#show as */*
+  Parameters: {"user"=>{"name"=>"michael1", "email"=>"generic1"}, "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/users/1" for ::1 at 2022-05-04 16:42:00 -0400
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"michael1", "email"=>"generic1"}, "id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:33
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `user_params' for #<UsersController:0x00007f24e8029360>
+Did you mean?  user1_path):
+  
+app/controllers/users_controller.rb:35:in `update'
+Started GET "/users/1" for ::1 at 2022-05-04 16:42:04 -0400
+Processing by UsersController#show as */*
+  Parameters: {"user"=>{"name"=>"michael1", "email"=>"generic1"}, "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/users/1" for ::1 at 2022-05-04 16:43:58 -0400
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"michael1", "email"=>"generic1"}, "id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:33
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `user_params' for #<UsersController:0x00007f24e81fa400>
+Did you mean?  user1_path):
+  
+app/controllers/users_controller.rb:35:in `update'
+Started PATCH "/users/1" for ::1 at 2022-05-04 16:45:31 -0400
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"michael1", "email"=>"generic1"}, "id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:33
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:35
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:35
+Completed 500 Internal Server Error in 96ms (ActiveRecord: 3.5ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/users_controller.rb:35:in `update'
+Started PATCH "/users/1" for ::1 at 2022-05-04 16:45:52 -0400
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"michael1", "email"=>"generic1"}, "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:33
+Completed 500 Internal Server Error in 135ms (ActiveRecord: 2.4ms)
+
+
+  
+NoMethodError (undefined method `user' for #<UsersController:0x00007f24dc4c5970>):
+  
+app/controllers/users_controller.rb:35:in `update'
+Started PATCH "/users/1" for ::1 at 2022-05-04 16:46:04 -0400
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"michael1", "email"=>"generic1"}, "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:33
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:35
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:35
+Completed 500 Internal Server Error in 91ms (ActiveRecord: 4.5ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/users_controller.rb:35:in `update'
+Started PATCH "/users/1" for ::1 at 2022-05-04 16:46:24 -0400
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"michael1", "email"=>"generic1"}, "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:33
+Completed 500 Internal Server Error in 154ms (ActiveRecord: 4.0ms)
+
+
+  
+NoMethodError (undefined method `user_params' for #<UsersController:0x00007f24dd0b3ae8>
+Did you mean?  user1_path):
+  
+app/controllers/users_controller.rb:35:in `update'
+Started GET "/users/1" for ::1 at 2022-05-04 16:53:33 -0400
+Processing by UsersController#show as */*
+  Parameters: {"user"=>{"name"=>"michael1", "email"=>"generic1"}, "id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:25
+Completed 200 OK in 71ms (Views: 0.2ms | ActiveRecord: 5.0ms)
+
+
+Started PATCH "/users/1" for ::1 at 2022-05-04 16:53:52 -0400
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"michael1", "email"=>"generic1"}, "id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:39
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "email" = $2 WHERE "users"."id" = $3[0m  [["name", "michael1"], ["email", "generic1"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:39
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:39
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 7.0ms)
+
+
