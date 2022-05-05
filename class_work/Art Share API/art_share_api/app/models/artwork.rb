@@ -35,5 +35,12 @@ class Artwork < ApplicationRecord
         dependent: :destroy
     )
 
+    has_many(
+         :likes, as: :liked
+        #  primary_key: :id ,
+        #  foreign_key: :liked_item_id
+        
+    )
+
 
 end

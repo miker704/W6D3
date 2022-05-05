@@ -20,6 +20,12 @@ class Comment < ApplicationRecord
 
     )
 
+    has_many(
+        :likes, as: :liked
+        # primary_key: :id,
+        # foreign_key: :liked_item_id
+
+    )
 
 
 

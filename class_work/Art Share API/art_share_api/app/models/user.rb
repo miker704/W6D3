@@ -34,4 +34,11 @@ class User <ApplicationRecord
         dependent: :destroy
     )
 
+    has_many :likes,
+    foreign_key: :user_id,
+    class_name: :Like,
+    primary_key: :id
+
+    
+
 end 
